@@ -1,0 +1,20 @@
+{
+    "personajes": [
+        {
+            "nombre": "Goku",
+            "planeta": "Tierra"
+        },
+        {
+            "nombre": "Vegetta",
+            "planeta": "Tierra"
+        },
+        {
+            "nombre": "Picolo",
+            "planeta": "Namek"
+        },
+        {
+            "nombre": "Freezer",
+            "planeta": "Cold"
+        }
+    ]
+}
