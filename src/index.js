@@ -25,6 +25,34 @@ app.get('/api/data', (req, res) => {
         }
     })
 });
+app.get('/login', (req, res) => {
+    res.status(200).send('EXITOSO')
+})
+
+app.post('/login', (req, res) => {
+    fs.readFile('./src/json/USERS.json', 'utf-8', (err, data) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error al leer el archivo JSON');
+        } else {
+            const credentials = req.body;
+            const users = JSON.parse(data);
+            let validCredentials = false;
+
+            users.forEach((user) => {
+                if (user.user === credentials.user && user.password === credentials.password) {
+                    validCredentials = true;
+                }
+            });
+
+            if (validCredentials) {
+                res.status(200).send('Credenciales válidas');
+            } else {
+                res.status(400).send('Credenciales no válidas');
+            }
+        }
+    });
+});
 
 app.post('/api/data', (req, res) => {
     fs.readFile('./src/json/IMGDATA.json', 'utf8', (err, data) => {
